@@ -1,0 +1,48 @@
+basePath: /
+consumes:
+- application/json
+definitions:
+  Lookup:
+    description: Input for dictionary.
+    properties:
+      searchTerm:
+        description: Search term can only contian English letters, digits, hyphens, apostrophes and whitespace.
+        type: string
+        x-go-name: SearchTerm
+      debug:
+        description: Debug mode shows spell-checker reasoning. It's meant to improve upon bad spell-checker performance.
+        type: boolean
+        x-go-name: Debug
+        default: false
+    required:
+    - searchTerm
+host: localhost
+info:
+  description: Enter a search term to recieve its definition from the dictionary.
+  title: RESTFUL API for Open Source Gutenburg Project Dictionary.
+paths:
+  /v1.0:
+    get:
+      parameters:
+      - description: JSON expected input.
+        in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/Lookup'
+      responses:
+        "400":
+          $ref: '#/responses/BadRequest'
+        "200":
+          $ref: '#/responses/OK'
+      tags:
+        - Inputs/Outputs for Dictionary API v1.0
+produces:
+- application/json
+responses:
+  BadRequest:
+    description: 'SearchTerm was blank or contained illegal characters.'
+  OK:
+    description: 'Defintion found, either for search term or automatically spell-corrected word.'            
+schemes:
+- http
+swagger: "2.0"
