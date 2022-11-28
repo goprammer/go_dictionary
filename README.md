@@ -1,4 +1,4 @@
-## About
+## Go Dictionary
 This is dictionary shows how to efficiently upload and serve large text files in Go. The spell-checker uses character manipulation and prefix matching to provide a best guess with decent performance.
 
 The Gutenburg_Dictionary directory holds a csv version of the public domain portion of "The Project Gutenberg Etext of Webster's Unabridged Dictionary" which is in turn based on the 1913 US Webster's Unabridged Dictionary.
